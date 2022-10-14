@@ -1,0 +1,9 @@
+provider: cloudflare
+
+sources:
+- ingress
+
+policy: sync
+
+extraArgs:
+- --cloudflare-proxied

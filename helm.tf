@@ -38,3 +38,20 @@ resource "helm_release" "openebs_localpv_provisioner" {
     value = "true"
   }
 }
+
+resource "helm_release" "external_dns" {
+  name      = "external-dns"
+  namespace = "kube-system"
+
+  repository = "https://kubernetes-sigs.github.io/external-dns"
+  chart      = "external-dns"
+  version    = "1.11.0"
+
+  depends_on = [
+    kubernetes_secret.external_dns
+  ]
+
+  values = [
+    file("helm/external-dns.yaml")
+  ]
+}
