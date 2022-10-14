@@ -24,3 +24,17 @@ resource "helm_release" "cert_manager" {
     value = "true"
   }
 }
+
+resource "helm_release" "openebs_localpv_provisioner" {
+  name      = "localpv-provisioner"
+  namespace = "kube-system"
+
+  repository = "https://openebs.github.io/dynamic-localpv-provisioner"
+  chart      = "localpv-provisioner"
+  version    = "3.3.0"
+
+  set {
+    name  = "hostpathClass.isDefaultClass"
+    value = "true"
+  }
+}
