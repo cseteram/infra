@@ -55,3 +55,18 @@ resource "helm_release" "external_dns" {
     file("helm/external-dns.yaml")
   ]
 }
+
+resource "helm_release" "dashboard" {
+  name      = "dashboard"
+  namespace = "dashboard"
+
+  create_namespace = true
+
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "kube-prometheus-stack"
+  version    = "41.4.0"
+
+  values = [
+    file("helm/kube-prometheus-stack.yaml")
+  ]
+}
