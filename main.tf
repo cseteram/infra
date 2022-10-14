@@ -44,3 +44,13 @@ provider "aws" {
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
+
+provider "kubernetes" {
+  host = format("https://%s:6443", aws_lightsail_instance.sekai.public_ip_address)
+}
+
+provider "helm" {
+  kubernetes {
+    host = format("https://%s:6443", aws_lightsail_instance.sekai.public_ip_address)
+  }
+}
