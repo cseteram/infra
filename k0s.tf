@@ -25,11 +25,3 @@ locals {
     }
   }
 }
-
-resource "local_file" "k0sctl_config" {
-  content  = yamlencode(local.k0sctl_tmpl)
-  filename = format("%s/%s", path.module, "k0sctl/config.yaml")
-
-  directory_permission = "0700"
-  file_permission      = "0600"
-}
