@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+terraform fmt -list=true -diff -check -recursive
