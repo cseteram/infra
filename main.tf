@@ -47,10 +47,18 @@ provider "cloudflare" {
 
 provider "kubernetes" {
   host = format("https://%s:6443", aws_lightsail_instance.sekai.public_ip_address)
+
+  cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+  client_certificate     = base64decode(var.client_certificate)
+  client_key             = base64decode(var.client_key)
 }
 
 provider "helm" {
   kubernetes {
     host = format("https://%s:6443", aws_lightsail_instance.sekai.public_ip_address)
+
+    cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+    client_certificate     = base64decode(var.client_certificate)
+    client_key             = base64decode(var.client_key)
   }
 }
