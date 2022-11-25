@@ -84,7 +84,7 @@ resource "helm_release" "loki" {
 
   set {
     name  = "loki.persistence.size"
-    value = "10Gi"
+    value = "8Gi"
   }
 }
 

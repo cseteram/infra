@@ -9,7 +9,7 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 20Gi
+              storage: 16Gi
 
 grafana:
   imageRenderer:
@@ -39,7 +39,7 @@ grafana:
   persistence:
     enabled: true
     type: pvc
-    size: 4Gi
+    size: 8Gi
 
   ingress:
     enabled: true
