@@ -56,37 +56,37 @@ resource "helm_release" "external_dns" {
   ]
 }
 
-resource "helm_release" "dashboard" {
-  name      = "dashboard"
-  namespace = kubernetes_namespace.dashboard.id
-
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "kube-prometheus-stack"
-  version    = "41.4.0"
-
-  values = [
-    file("helm/kube-prometheus-stack.yaml")
-  ]
-}
-
-resource "helm_release" "loki" {
-  name      = "loki"
-  namespace = kubernetes_namespace.dashboard.id
-
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "loki-stack"
-  version    = "2.8.7"
-
-  set {
-    name  = "loki.persistence.enabled"
-    value = "true"
-  }
-
-  set {
-    name  = "loki.persistence.size"
-    value = "10Gi"
-  }
-}
+# resource "helm_release" "dashboard" {
+#   name      = "dashboard"
+#   namespace = kubernetes_namespace.dashboard.id
+# 
+#   repository = "https://prometheus-community.github.io/helm-charts"
+#   chart      = "kube-prometheus-stack"
+#   version    = "41.4.0"
+# 
+#   values = [
+#     file("helm/kube-prometheus-stack.yaml")
+#   ]
+# }
+# 
+# resource "helm_release" "loki" {
+#   name      = "loki"
+#   namespace = kubernetes_namespace.dashboard.id
+# 
+#   repository = "https://grafana.github.io/helm-charts"
+#   chart      = "loki-stack"
+#   version    = "2.8.7"
+# 
+#   set {
+#     name  = "loki.persistence.enabled"
+#     value = "true"
+#   }
+# 
+#   set {
+#     name  = "loki.persistence.size"
+#     value = "10Gi"
+#   }
+# }
 
 resource "helm_release" "argo_cd" {
   name      = "argo-cd"
