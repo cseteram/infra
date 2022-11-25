@@ -9,22 +9,22 @@ resource "kubernetes_secret" "external_dns" {
   }
 }
 
-# resource "kubernetes_namespace" "dashboard" {
-#   metadata {
-#     name = "dashboard"
-#   }
-# }
-# 
-# resource "kubernetes_secret" "grafana_github_oauth" {
-#   metadata {
-#     name      = "github-oauth"
-#     namespace = kubernetes_namespace.dashboard.id
-#   }
-# 
-#   data = {
-#     secret = var.grafana_github_oauth_client_secret
-#   }
-# }
+resource "kubernetes_namespace" "dashboard" {
+  metadata {
+    name = "dashboard"
+  }
+}
+
+resource "kubernetes_secret" "grafana_github_oauth" {
+  metadata {
+    name      = "github-oauth"
+    namespace = kubernetes_namespace.dashboard.id
+  }
+
+  data = {
+    secret = var.grafana_github_oauth_client_secret
+  }
+}
 
 resource "kubernetes_namespace" "argo" {
   metadata {
