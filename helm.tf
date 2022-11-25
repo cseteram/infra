@@ -58,9 +58,7 @@ resource "helm_release" "external_dns" {
 
 resource "helm_release" "dashboard" {
   name      = "dashboard"
-  namespace = "dashboard"
-
-  create_namespace = true
+  namespace = kubernetes_namespace.dashboard.id
 
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
@@ -73,7 +71,7 @@ resource "helm_release" "dashboard" {
 
 resource "helm_release" "loki" {
   name      = "loki"
-  namespace = "dashboard"
+  namespace = kubernetes_namespace.dashboard.id
 
   repository = "https://grafana.github.io/helm-charts"
   chart      = "loki-stack"

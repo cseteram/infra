@@ -18,6 +18,10 @@ variable "client_key" {
   type = string
 }
 
+variable "grafana_github_oauth_client_secret" {
+  type = string
+}
+
 variable "argo_cd_github_oauth_client_secret" {
   type = string
 }
