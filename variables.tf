@@ -17,3 +17,7 @@ variable "client_certificate" {
 variable "client_key" {
   type = string
 }
+
+variable "argo_cd_github_oauth_client_secret" {
+  type = string
+}

@@ -70,3 +70,39 @@ resource "helm_release" "dashboard" {
     file("helm/kube-prometheus-stack.yaml")
   ]
 }
+
+resource "helm_release" "loki" {
+  name      = "loki"
+  namespace = "dashboard"
+
+  repository = "https://grafana.github.io/helm-charts"
+  chart      = "loki-stack"
+  version    = "2.8.7"
+
+  set {
+    name  = "loki.persistence.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "loki.persistence.size"
+    value = "10Gi"
+  }
+}
+
+resource "helm_release" "argo_cd" {
+  name      = "argo-cd"
+  namespace = kubernetes_namespace.argo.id
+
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  version    = "5.14.1"
+
+  depends_on = [
+    kubernetes_secret.argo_cd_github_oauth
+  ]
+
+  values = [
+    file("helm/argo-cd.yaml")
+  ]
+}
