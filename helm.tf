@@ -1,5 +1,5 @@
 resource "helm_release" "ingress_nginx" {
-  name      = "ingress-nginx-real"
+  name      = "ingress-nginx"
   namespace = "kube-system"
 
   repository = "https://kubernetes.github.io/ingress-nginx"
