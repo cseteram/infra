@@ -5,7 +5,7 @@ locals {
   k0s_version  = "1.27.3+k0s.0"
 
   controller = {
-    name = "mmj"
+    name = "more-more-jump"
 
     availability_zone = "ap-northeast-2a"
     blueprint_id      = "ubuntu_22_04"
