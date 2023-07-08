@@ -8,7 +8,7 @@ locals {
     name = "more-more-jump"
 
     availability_zone = "ap-northeast-2a"
-    blueprint_id      = "ubuntu_22_04"
+    blueprint_id      = "debian_11"
     bundle_id         = "small_2_0"
   }
 
@@ -16,7 +16,7 @@ locals {
     name = ["minori", "haruka", "airi", "shizuku"]
 
     availability_zone = "ap-northeast-2a"
-    blueprint_id      = "ubuntu_22_04"
+    blueprint_id      = "debian_11"
     bundle_id         = "micro_2_0"
   }
 }
