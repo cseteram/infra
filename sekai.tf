@@ -147,13 +147,15 @@ locals {
     spec = {
       hosts = [
         for host in concat([aws_lightsail_instance.sekaiv2_controller], aws_lightsail_instance.sekaiv2_workers) : {
+          role     = host.tags["Role"]
+          hostname = host.tags["Name"]
+
           ssh = {
             address = host.public_ip_address
             user    = host.username
             port    = 22
             keyPath = "~/.ssh/id_ed25519"
           }
-          role = host.tags["Role"]
         }
       ]
       k0s = {
