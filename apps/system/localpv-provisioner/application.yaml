@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argo
+  name: localpv-provisioner
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: https://openebs.github.io/dynamic-localpv-provisioner
+      chart: localpv-provisioner
+      targetRevision: 4.1.1
+      helm:
+        valueFiles:
+          - $values/apps/system/localpv-provisioner/values.yaml # FIXME
+    - repoURL: https://github.com/cseteram/infra.git
+      targetRevision: main
+      ref: values

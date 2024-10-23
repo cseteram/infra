@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: cloudflare
+  namespace: external-dns
+spec:
+  encryptedData:
+    CF_API_TOKEN: AgCXIs944cxlN7zMIKHhzLwe+AKp9XX7TTHPDPQFy+nqtM+cKCJDaEP31mubTXkLMqq5/sU18UOJgWpkYehSsMGot8c77L38As4yj4JLU3bsAa10WWE/OY5o4UkSiyrvMf7N826fPZcwyimziJpf0XEpv7NviDxDvtbEuX664py2oxLfWY4cqn8FO7OHsqZgUFV1NB4Oc8RJUG0SogATZtmP8WgFvq7Qtg3xl2ofCQE6taf+OBCxzNtTa7J66PpybAbRpiOy5Yocb9m01V8bs4n1n3b0F7Wbg+1R9P4pXhSmNdNRTzip2ys4C4DSnJ1OjfAaBhGVW0O2XjKRtXM3I/s6MmPXfGxyN9mezzTxcTY9zSmW+20sEkagh9nGjyRdyElV8prRDUeFxLaWVPejydCN3eqHKgSi2zEO34nPCDyXpzIIPlqkvU9LahJCWQXLtb1RHYCHFmi7EHV9XJUFPfx7etqI1y/KfpuYUYE1gQZ6sOlMT4LHiWC74w389qesR0tf5i8c+XTGrZgMYVtrVwDC3CEyqDHhmLZv9pvDxe29jssqhQNx8qbYg19tYNowUQiqab0krzm7GhfXlJHPPgErKBcmR/cB/SY3La2SIdpkQg+3cfb20jVw2mw7zKvrWcCfH5nhyTe+QjY0vh0GPKUnvz71h3rcf9Qq5Y9WRAF18ifraAVbw9Pi3jm9x8IAhojahxcnmCRSWc7c2e3dZ7D9/IUMxP2kWD6pX1V/PjaMNSDAOZ2mgehm
+  template:
+    metadata:
+      creationTimestamp: null
+      name: cloudflare
+      namespace: external-dns
+    type: Opaque

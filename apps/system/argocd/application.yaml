@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argo
+  name: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: argo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+      targetRevision: 7.6.12
+      helm:
+        valueFiles:
+          - $values/apps/system/argocd/values.yaml
+    - repoURL: https://github.com/cseteram/infra.git
+      targetRevision: main
+      ref: values

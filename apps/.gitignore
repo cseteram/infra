@@ -1,0 +1,9 @@
+# Kubernetes cluster credentials
+.kubeconfig
+.kube/config
+
+# Kubernetes secret resources
+**/secret.yml
+**/secret.yaml
+**/secrets.yml
+**/secrets.yaml
