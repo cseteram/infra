@@ -14,3 +14,11 @@ spec:
       creationTimestamp: null
       name: operator-oauth
       namespace: tailscale
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: ts-sekai
+spec:
+  hostname: ts-sekai
+  exitNode: true
