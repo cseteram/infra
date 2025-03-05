@@ -6,6 +6,6 @@ configs:
     server.insecure: true
 
 server:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
+  service:
+    annotations:
+      tailscale.com/expose: "true"
