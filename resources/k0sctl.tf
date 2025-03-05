@@ -22,7 +22,7 @@ locals {
         }
       ]
       k0s = {
-        version       = "v1.31.1+k0s.1"
+        version       = "v1.32.2+k0s.0"
         dynamicConfig = false
       }
     }
